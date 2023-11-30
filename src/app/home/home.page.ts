@@ -27,9 +27,9 @@ export class HomePage implements OnInit {
       console.log(this.nomeUsuario);
     }
 
-    getMedicos(): void {
-      this.medicos = this.usuarioRoute.getMedicos();
-      console.log(this.medicos)
+    async getMedicos(): Promise<void> {
+      this.medicos = await this.usuarioRoute.getMedicos();
+      console.log(this.medicos['resultado'])
     }
 
     async logoff(): Promise<void> {

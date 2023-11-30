@@ -60,22 +60,25 @@
 
     <div class="slides">
       <swiper-container slides-per-view="3" space-between="0" grab-cursor="true">
-    <swiper-slide>
+
+    <swiper-slide *ngFor="let medico of medicos['resultado']">
       <div class="card-header">
         <div>
           <ion-icon name="heart"></ion-icon>
         </div>
         <div>
           <ion-icon name="star"></ion-icon>
-          <p>4.9</p>
+          <p>{{medico.estrelas}}</p>
         </div>
       </div>
 
       <div class="card-body">
-        <img src="../../assets/pardalino.jfif" alt="">
-        <h1>Dr. Pardal</h1><span>SD</span>
+        <img src="{{medico.img_url}}" alt="">
+        <h1>{{medico.nome}}</h1><span>R$ {{medico.preco}} / hora</span>
       </div>
     </swiper-slide>
+    
+    <swiper-slide></swiper-slide>
     
       </swiper-container>
     </div>

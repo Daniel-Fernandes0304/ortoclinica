@@ -35,7 +35,7 @@ export class UsuariosRoute {
     }
 
     public getMedicos = async () => {
-        return this.http.get(`${this.apiUrl}/tp04/medicos`, await this.getHeader()).toPromise()
+        return this.http.get(`${this.apiUrl}/tp04/medicos/`, await this.getHeader()).toPromise()
         .then(resultado => resultado)
         .catch(error => error);
     }
