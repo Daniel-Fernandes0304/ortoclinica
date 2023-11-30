@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { Router } from '@angular/router';
+import { UsuariosRoute } from '../routes/usuarios.route';
 
 
 @Component({
@@ -12,13 +13,23 @@ export class HomePage implements OnInit {
 
   constructor(
     private storage: Storage,
-    private router: Router
+    private router: Router,
+    private usuarioRoute: UsuariosRoute
   ) {  }
+
     nomeUsuario: string | null = '';
+    usuario: any | null = null;
+    medicos: any;
 
     async ngOnInit(): Promise<void> {
-      this.nomeUsuario = await this.storage.get('usuario');
+      this.usuario = await this.storage.get('usuario');
+      this.nomeUsuario = this.usuario['nome'];
       console.log(this.nomeUsuario);
+    }
+
+    getMedicos(): void {
+      this.medicos = this.usuarioRoute.getMedicos();
+      console.log(this.medicos)
     }
 
     async logoff(): Promise<void> {

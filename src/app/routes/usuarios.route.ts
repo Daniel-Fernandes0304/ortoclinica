@@ -11,26 +11,32 @@ export class UsuariosRoute {
         private storage: Storage
         ) {}
 
-        private apiUrl = 'http://10.91.228.11:3000';
+        private apiUrl = 'http://10.91.249.10:3000';
 
     public async getToken(): Promise<string> {
-        const usuario = JSON.parse(await this.storage.get('currentUser'));
+        const usuario = JSON.parse(await this.storage.get('usuario'));
         return 'Bearer' + (usuario ? usuario.token : '');
     }
 
-    public getHeader(): { headers: HttpHeaders } {
+    public async getHeader(): Promise<{ headers: HttpHeaders }> {
         return {
             headers: new HttpHeaders({
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': await this.getToken()
             })
         };
     }
 
     public login = async (body: any) => {
-        this.http.post(`${this.apiUrl}/tp01/usuarios/login`, body).toPromise()
-        .then(teste => console.log(teste)).catch(
-            erro => console.log(erro)
-         )
+        return this.http.post(`${this.apiUrl}/tp01/usuarios/login`, body).toPromise()
+        .then(teste => teste)
+        .catch(error => error);
+    }
+
+    public getMedicos = async () => {
+        return this.http.get(`${this.apiUrl}/tp04/medicos`).toPromise()
+        .then(resultado => resultado)
+        .catch(error => error);
     }
 }

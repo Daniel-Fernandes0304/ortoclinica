@@ -31,16 +31,19 @@ export class LoginComponent implements OnInit {
     this.formularioValido = this.formulario.valid;
    if (this.formulario.valid) {
     const dados = this.formulario.value;
-    console.log('Dados do formulario', dados);
     await this.login(dados);
-    // this.router.navigate(['/home'], { replaceUrl: true});
       }
    }
 
    login = async (dados: any): Promise<any> => {
-     await this.usuariosRoute.login({
-        email: dados.email,
-        password: dados.senha
-    });
+    const response = await this.usuariosRoute.login({
+        'email': dados.email,
+        'senha': dados.senha
+    })
+    await this.storage.set('usuario', response);
+    if ('token' in await this.storage.get('usuario')) {
+      this.router.navigate(['/home'], { replaceUrl: true })
+      console.log(await this.storage.get('usuario'));
+    }
    }
 }
