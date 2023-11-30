@@ -14,7 +14,7 @@ export class UsuariosRoute {
         private apiUrl = 'http://10.91.249.10:3000';
 
     public async getToken(): Promise<string> {
-        const usuario = JSON.parse(await this.storage.get('usuario'));
+        const usuario = await this.storage.get('usuario');
         return 'Bearer' + (usuario ? usuario.token : '');
     }
 
@@ -35,7 +35,7 @@ export class UsuariosRoute {
     }
 
     public getMedicos = async () => {
-        return this.http.get(`${this.apiUrl}/tp04/medicos`).toPromise()
+        return this.http.get(`${this.apiUrl}/tp04/medicos`, await this.getHeader()).toPromise()
         .then(resultado => resultado)
         .catch(error => error);
     }

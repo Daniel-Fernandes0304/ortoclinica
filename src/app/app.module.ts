@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { UsuariosRoute } from './routes/usuarios.route';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,8 +19,10 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     IonicModule.forRoot(), 
     AppRoutingModule, 
     FontAwesomeModule,
-    IonicStorageModule.forRoot()],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+    IonicStorageModule.forRoot(),
+    HttpClientModule
+  ],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, UsuariosRoute],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -4,6 +4,8 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { UsuariosRoute } from '../routes/usuarios.route';
 
 
 @NgModule({
@@ -11,8 +13,11 @@ import { HomePageRoutingModule } from './home-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    HttpClientModule
   ],
+  providers:[UsuariosRoute],
+
   declarations: [HomePage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
