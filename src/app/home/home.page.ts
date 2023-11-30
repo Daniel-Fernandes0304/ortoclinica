@@ -24,6 +24,7 @@ export class HomePage implements OnInit {
     async ngOnInit(): Promise<void> {
       this.usuario = await this.storage.get('usuario');
       this.nomeUsuario = this.usuario['nome'];
+      this.getMedicos();
       console.log(this.nomeUsuario);
     }
 

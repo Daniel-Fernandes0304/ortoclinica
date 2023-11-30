@@ -15,7 +15,7 @@ export class UsuariosRoute {
 
     public async getToken(): Promise<string> {
         const usuario = await this.storage.get('usuario');
-        return 'Bearer' + (usuario ? usuario.token : '');
+        return 'Bearer ' + (usuario ? usuario.token : '');
     }
 
     public async getHeader(): Promise<{ headers: HttpHeaders }> {
