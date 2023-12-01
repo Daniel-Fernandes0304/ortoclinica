@@ -24,12 +24,13 @@ export class HomePage implements OnInit {
     async ngOnInit(): Promise<void> {
       this.usuario = await this.storage.get('usuario');
       this.nomeUsuario = this.usuario['nome'];
-      this.getMedicos();
+      await this.getMedicos();
       console.log(this.nomeUsuario);
     }
 
     async getMedicos(): Promise<void> {
       this.medicos = await this.usuarioRoute.getMedicos();
+      this.medicos = this.medicos['resultado'];
       console.log(this.medicos['resultado'])
     }
 
