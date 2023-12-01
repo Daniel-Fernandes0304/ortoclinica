@@ -34,6 +34,12 @@ export class UsuariosRoute {
         .catch(error => error);
     }
 
+     public cadastrar = async (body: any) => {
+        return this.http.post(`${this.apiUrl}/tp01/usuarios/cadastro`, body).toPromise()
+        .then(teste => teste)
+        .catch(error => error);
+     }
+
     public getMedicos = async () => {
         return this.http.get(`${this.apiUrl}/tp04/medicos/`, await this.getHeader()).toPromise()
         .then(resultado => resultado)

@@ -42,16 +42,6 @@
       <ion-input [ngClass]="{'error' : !formularioValido}" formControlName="senha" fill="solid" placeholder="Senha *" type="password"></ion-input>
       <p *ngIf="!formularioValido" class="type-error">Digite uma senha</p>
     </div>
-      <ion-icon name="eye" slot="end"></ion-icon>
-    </ion-item>
-
-    <ion-item>
-        <div>
-          <ion-input [ngClass]="{'error' : !formularioValido}" formControlName="senha" fill="solid" placeholder="Confirmar senha *" type="password"></ion-input>
-         <p *ngIf="!formularioValido" class="type-error">Digite sua senha novamente</p>
-        </div>
-    <ion-icon name="eye" slot="end"></ion-icon>
-
     </ion-item>
 
   </ion-toolbar>

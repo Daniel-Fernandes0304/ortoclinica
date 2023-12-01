@@ -5,6 +5,8 @@ import { CadastroRoutingModule } from './cadastro-routing.module';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
+import { UsuariosRoute } from '../routes/usuarios.route';
 
 @NgModule({
   declarations: [CadastroComponent],
@@ -14,7 +16,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     IonicModule,
     FormsModule,
     FontAwesomeModule,
-    ReactiveFormsModule 
-  ]
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers:[UsuariosRoute]
 })
 export class CadastroModule { }
